@@ -9,10 +9,12 @@ $(document).ready(function () {
   //sorting 
   $(".time-block").each(function () {
     var realHour = dayjs().format('H')
+    let id = $(this).attr("id");
     console.log(realHour)
+    console.log(id)
     if (id < realHour) {
       $(this).addClass("past");
-    } else if (id = realHour) {
+    } else if (id === realHour) {
       $(this).addClass("present");
     } else if (id > realHour) {
       $(this).addClass("future");
