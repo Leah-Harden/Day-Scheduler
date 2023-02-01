@@ -1,6 +1,9 @@
 
 $(document).ready(function () {
 
+  var text8 = $('#8 textarea')
+  var text9 = $('#9 textarea')
+
   //time part
   var now = dayjs().format('MMMM-DD-dddd')
   document.getElementById('currentDay').innerHTML = now
@@ -24,29 +27,31 @@ $(document).ready(function () {
   });
 
 
+  //sorting 
+  //save
+  $(".saveBtn").click(function () {
+    var value = $(this).siblings(".description").val();
+    let id = $(this).parent().attr("id");
+    var list = JSON.parse(localStorage.getItem('tasksList'))
+    // needed or will break! This make it a empty object if there is nothing in there.
+    if (!list) {
+      list = {}
+    }
+
+
+    list[id] = value
+    localStorage.setItem('tasksList', JSON.stringify(list));
+  })
+
+  var list = JSON.parse(localStorage.getItem('tasksList'))
+  if (list) {
+    text8.text(list['8'])
+    text9.text(list['9'])
+  }
+  // localStorage.setItem(id, value);
+  // var x = id;
+  // let storedInput = localStorage.getItem(x)
+  // console.log(storedInput)
+  //save
+  document.getElementById('currentDay')
 });
-//sorting 
-//save
-$(".saveBtn").click(function () {
-  let id = $(this).attr("id");
-  text = document.getElementById(id).childNodes[1].nodeValue
-
-  localStorage.setItem("task", text);
-  console.log(localStorage.getItem(localStorage))
-
-  //document.getElementById(id).firstChild.nextSibling.input.value
-});
-//save
-
-// TODO: Add a listener for click events on the save button. This code should
-// use the id in the containing time-block as a key to save the user input in
-// local storage. HINT: What does `this` reference in the click listener
-// function? How can DOM traversal be used to get the "hour-x" id of the
-// time-block containing the button that was clicked? How might the id be
-// useful when saving the description in local storage?
-
-// TODO: Add code to get any user input that was saved in localStorage and set
-// the values of the corresponding textarea elements. HINT: How can the id
-// attribute of each time-block be used to do this?
-//
-document.getElementById('currentDay')
