@@ -5,3 +5,4 @@ It has the correct date near the top so it is easy to see.
  ![Screenshot](photos/Screenshot.png)
 
  https://xinli32702.github.io/Day-Scheduler/
+ 
