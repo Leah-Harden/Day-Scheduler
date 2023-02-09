@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     // console.log("the current hour is " + realHour)
     //  console.log("the id of 'this' is: " + id)
-    if (id < realHour) {
+    if (parseInt(id) < parseInt(realHour)) {
       $(this).addClass("past");
     } else if (id == realHour) {
       $(this).addClass("present");
